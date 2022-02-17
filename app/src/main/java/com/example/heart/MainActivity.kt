@@ -14,21 +14,18 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
-
     lateinit var dataSetEntries1: ArrayList<Entry>
     lateinit var dataSetEntries2: ArrayList<Entry>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         dataSet1
         dataSet2
 
         val xAxisLabels = arrayListOf("","Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
-
         val set1 = LineDataSet(dataSetEntries1, "Data set 1")
         set1.apply {
             this.color = Color.BLUE
@@ -37,6 +34,7 @@ class MainActivity : AppCompatActivity() {
             this.valueTextColor = Color.BLACK
             this.valueTextSize = 18f
             this.mode = LineDataSet.Mode.CUBIC_BEZIER
+            this.setCircleColor(Color.BLACK)
         }
         val set2 = LineDataSet(dataSetEntries2, "Data set 2")
         set2.apply {
@@ -46,6 +44,7 @@ class MainActivity : AppCompatActivity() {
             this.valueTextColor = Color.BLACK
             this.valueTextSize = 18f
             this.mode = LineDataSet.Mode.CUBIC_BEZIER
+            this.setCircleColor(Color.BLACK)
         }
 
         val dataSets: ArrayList<LineDataSet> = ArrayList()
