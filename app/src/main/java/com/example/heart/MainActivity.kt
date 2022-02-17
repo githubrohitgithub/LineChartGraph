@@ -17,12 +17,14 @@ class MainActivity : AppCompatActivity() {
     var lineData: LineData? = null
     var lineDataSet: LineDataSet? = null
     var lineEntries1: ArrayList<Entry>? = null
+    var lineEntries2: ArrayList<Entry>? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         lineChart = findViewById(R.id.lineChart)
 
         entries
+        entries2
 
         val xAxisLabels = arrayListOf("","Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
 
@@ -31,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             this.color = Color.BLUE
             this.setDrawValues(false)
         }
-        val set2 = LineDataSet(lineEntries1, "Data set 2")
+        val set2 = LineDataSet(lineEntries2, "Data set 2")
         set2.apply {
             this.color = Color.BLUE
             this.setDrawValues(false)
@@ -70,5 +72,17 @@ class MainActivity : AppCompatActivity() {
             lineEntries1!!.add(Entry(5f, 80f))
             lineEntries1!!.add(Entry(6f, 110f))
             lineEntries1!!.add(Entry(7f, 120f))
+        }
+
+    private val entries2: Unit
+        get() {
+            lineEntries2 = ArrayList<Entry>()
+            lineEntries2!!.add(Entry(1f, 40f))
+            lineEntries2!!.add(Entry(2f, 50f))
+            lineEntries2!!.add(Entry(3f, 70f))
+            lineEntries2!!.add(Entry(4f, 30f))
+            lineEntries2!!.add(Entry(5f, 20f))
+            lineEntries2!!.add(Entry(6f, 70f))
+            lineEntries2!!.add(Entry(7f, 120f))
         }
 }
