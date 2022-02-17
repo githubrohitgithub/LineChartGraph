@@ -4,13 +4,12 @@ import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.github.mikephil.charting.charts.LineChart
-import com.github.mikephil.charting.charts.ScatterChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
-import com.github.mikephil.charting.interfaces.datasets.IScatterDataSet
 import com.github.mikephil.charting.utils.ColorTemplate
+
 
 class MainActivity : AppCompatActivity() {
     lateinit var lineChart: LineChart
@@ -41,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         val dataSets: ArrayList<LineDataSet> = ArrayList()
         dataSets.add(set1)
-//        dataSets.add(set2)
+        dataSets.add(set2)
 //        dataSets.add(set3)
 
 
