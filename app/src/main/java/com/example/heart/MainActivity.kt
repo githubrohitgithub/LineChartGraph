@@ -12,22 +12,21 @@ import com.github.mikephil.charting.utils.ColorTemplate
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var lineChart: LineChart
-    var lineData: LineData? = null
 
-    var lineEntries1: ArrayList<Entry>? = null
-    var lineEntries2: ArrayList<Entry>? = null
+    lateinit var lineChart: LineChart
+    lateinit var dataSetEntries1: ArrayList<Entry>
+    lateinit var dataSetEntries2: ArrayList<Entry>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         lineChart = findViewById(R.id.lineChart)
 
-        entries
-        entries2
+        dataSet1
+        dataSet2
 
         val xAxisLabels = arrayListOf("","Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
 
-        val set1 = LineDataSet(lineEntries1, "Data set 1")
+        val set1 = LineDataSet(dataSetEntries1, "Data set 1")
         set1.apply {
             this.color = Color.BLUE
             this.setDrawValues(false)
@@ -36,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             this.valueTextSize = 18f
             this.mode = LineDataSet.Mode.CUBIC_BEZIER
         }
-        val set2 = LineDataSet(lineEntries2, "Data set 2")
+        val set2 = LineDataSet(dataSetEntries2, "Data set 2")
         set2.apply {
             this.color = Color.BLUE
             this.setDrawValues(false)
@@ -58,32 +57,29 @@ class MainActivity : AppCompatActivity() {
             this.data = LineData(dataSets as List<ILineDataSet>?)
         }
 
-
-
-
     }
 
-    private val entries: Unit
+    private val dataSet1: Unit
         get() {
-            lineEntries1 = ArrayList<Entry>()
-            lineEntries1!!.add(Entry(1f, 50f))
-            lineEntries1!!.add(Entry(2f, 70f))
-            lineEntries1!!.add(Entry(3f, 30f))
-            lineEntries1!!.add(Entry(4f, 90f))
-            lineEntries1!!.add(Entry(5f, 80f))
-            lineEntries1!!.add(Entry(6f, 110f))
-            lineEntries1!!.add(Entry(7f, 120f))
+            dataSetEntries1 = ArrayList()
+            dataSetEntries1.add(Entry(1f, 50f))
+            dataSetEntries1.add(Entry(2f, 70f))
+            dataSetEntries1.add(Entry(3f, 30f))
+            dataSetEntries1.add(Entry(4f, 90f))
+            dataSetEntries1.add(Entry(5f, 80f))
+            dataSetEntries1.add(Entry(6f, 110f))
+            dataSetEntries1.add(Entry(7f, 120f))
         }
 
-    private val entries2: Unit
+    private val dataSet2: Unit
         get() {
-            lineEntries2 = ArrayList<Entry>()
-            lineEntries2!!.add(Entry(1f, 40f))
-            lineEntries2!!.add(Entry(2f, 50f))
-            lineEntries2!!.add(Entry(3f, 70f))
-            lineEntries2!!.add(Entry(4f, 30f))
-            lineEntries2!!.add(Entry(5f, 20f))
-            lineEntries2!!.add(Entry(6f, 70f))
-            lineEntries2!!.add(Entry(7f, 120f))
+            dataSetEntries2 = ArrayList()
+            dataSetEntries2.add(Entry(1f, 40f))
+            dataSetEntries2.add(Entry(2f, 50f))
+            dataSetEntries2.add(Entry(3f, 70f))
+            dataSetEntries2.add(Entry(4f, 30f))
+            dataSetEntries2.add(Entry(5f, 20f))
+            dataSetEntries2.add(Entry(6f, 70f))
+            dataSetEntries2.add(Entry(7f, 120f))
         }
 }
