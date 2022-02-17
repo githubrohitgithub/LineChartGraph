@@ -14,7 +14,7 @@ import com.github.mikephil.charting.utils.ColorTemplate
 class MainActivity : AppCompatActivity() {
     lateinit var lineChart: LineChart
     var lineData: LineData? = null
-    var lineDataSet: LineDataSet? = null
+
     var lineEntries1: ArrayList<Entry>? = null
     var lineEntries2: ArrayList<Entry>? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,33 +31,39 @@ class MainActivity : AppCompatActivity() {
         set1.apply {
             this.color = Color.BLUE
             this.setDrawValues(false)
+            this.setColors(*ColorTemplate.JOYFUL_COLORS)
+            this.valueTextColor = Color.BLACK
+            this.valueTextSize = 18f
+            this.mode = LineDataSet.Mode.CUBIC_BEZIER
         }
         val set2 = LineDataSet(lineEntries2, "Data set 2")
         set2.apply {
             this.color = Color.BLUE
             this.setDrawValues(false)
+            this.setColors(*ColorTemplate.JOYFUL_COLORS)
+            this.valueTextColor = Color.BLACK
+            this.valueTextSize = 18f
+            this.mode = LineDataSet.Mode.CUBIC_BEZIER
         }
 
         val dataSets: ArrayList<LineDataSet> = ArrayList()
         dataSets.add(set1)
         dataSets.add(set2)
-//        dataSets.add(set3)
 
 
-        lineDataSet = LineDataSet(lineEntries1, "Set 1")
-        lineData = LineData(lineDataSet)
+
+
         lineChart.data = lineData
+        lineChart.axisRight.isEnabled = false
+        lineChart.xAxis.valueFormatter = IndexAxisValueFormatter(xAxisLabels)
+        lineChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
+
+
+
 
 
         lineChart.data = LineData(dataSets as List<ILineDataSet>?)
 
-        lineDataSet!!.setColors(*ColorTemplate.JOYFUL_COLORS)
-        lineDataSet!!.valueTextColor = Color.BLACK
-        lineDataSet!!.valueTextSize = 18f
-        lineDataSet!!.mode = LineDataSet.Mode.CUBIC_BEZIER
-        lineChart.axisRight.isEnabled = false
-        lineChart.xAxis.valueFormatter = IndexAxisValueFormatter(xAxisLabels)
-        lineChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
 
     }
 
