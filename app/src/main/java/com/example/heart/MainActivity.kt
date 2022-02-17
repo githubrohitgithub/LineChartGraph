@@ -3,23 +3,26 @@ package com.example.heart
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.heart.databinding.ActivityMainBinding
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
-import com.github.mikephil.charting.utils.ColorTemplate
 
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var lineChart: LineChart
+    private lateinit var binding: ActivityMainBinding
+
+
     lateinit var dataSetEntries1: ArrayList<Entry>
     lateinit var dataSetEntries2: ArrayList<Entry>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        lineChart = findViewById(R.id.lineChart)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
 
         dataSet1
         dataSet2
@@ -50,11 +53,12 @@ class MainActivity : AppCompatActivity() {
         dataSets.add(set2)
 
 
-        lineChart.apply {
+        binding.lineChart.apply {
             this.axisRight.isEnabled = false
             this.xAxis.valueFormatter = IndexAxisValueFormatter(xAxisLabels)
             this.xAxis.position = XAxis.XAxisPosition.BOTTOM
             this.data = LineData(dataSets as List<ILineDataSet>?)
+            this.description.text = "Systolic and Diatolic"
         }
 
     }
