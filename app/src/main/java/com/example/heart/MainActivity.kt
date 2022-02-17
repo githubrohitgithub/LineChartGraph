@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         set1.apply {
             this.color = Color.BLUE
             this.setDrawValues(false)
-            this.setColors(*ColorTemplate.JOYFUL_COLORS)
+            this.setColors(Color.BLUE)
             this.valueTextColor = Color.BLACK
             this.valueTextSize = 18f
             this.mode = LineDataSet.Mode.CUBIC_BEZIER
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         set2.apply {
             this.color = Color.BLUE
             this.setDrawValues(false)
-            this.setColors(*ColorTemplate.JOYFUL_COLORS)
+            this.setColors(Color.RED)
             this.valueTextColor = Color.BLACK
             this.valueTextSize = 18f
             this.mode = LineDataSet.Mode.CUBIC_BEZIER
@@ -51,18 +51,14 @@ class MainActivity : AppCompatActivity() {
         dataSets.add(set2)
 
 
+        lineChart.apply {
+            this.axisRight.isEnabled = false
+            this.xAxis.valueFormatter = IndexAxisValueFormatter(xAxisLabels)
+            this.xAxis.position = XAxis.XAxisPosition.BOTTOM
+            this.data = LineData(dataSets as List<ILineDataSet>?)
+        }
 
 
-        lineChart.data = lineData
-        lineChart.axisRight.isEnabled = false
-        lineChart.xAxis.valueFormatter = IndexAxisValueFormatter(xAxisLabels)
-        lineChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
-
-
-
-
-
-        lineChart.data = LineData(dataSets as List<ILineDataSet>?)
 
 
     }
