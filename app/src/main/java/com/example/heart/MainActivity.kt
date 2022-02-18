@@ -4,9 +4,9 @@ import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.heart.databinding.ActivityMainBinding
-import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
+import com.github.mikephil.charting.formatter.IAxisValueFormatter
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         dataSet1
         dataSet2
 
-        val xAxisLabels = arrayListOf("","Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
+
         val set1 = LineDataSet(dataSetEntries1, "Data set 1")
         set1.apply {
             this.color = Color.BLUE
@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         dataSets.add(set1)
         dataSets.add(set2)
 
+        val xAxisLabels = arrayListOf("0","100ms", "200ms", "300ms", "400ms", "500ms", "600ms", "700ms","800ms","900ms","1000ms")
 
         binding.lineChart.apply {
             this.axisRight.isEnabled = false
@@ -58,6 +59,8 @@ class MainActivity : AppCompatActivity() {
             this.xAxis.position = XAxis.XAxisPosition.BOTTOM
             this.data = LineData(dataSets as List<ILineDataSet>?)
             this.description.text = "Systolic and Diatolic"
+            this.description.isEnabled = true
+
         }
 
     }
@@ -72,6 +75,9 @@ class MainActivity : AppCompatActivity() {
             dataSetEntries1.add(Entry(5f, 80f))
             dataSetEntries1.add(Entry(6f, 110f))
             dataSetEntries1.add(Entry(7f, 120f))
+            dataSetEntries1.add(Entry(8f, 120f))
+            dataSetEntries1.add(Entry(9f, 120f))
+            dataSetEntries1.add(Entry(10f, 120f))
         }
 
     private val dataSet2: Unit
@@ -84,5 +90,8 @@ class MainActivity : AppCompatActivity() {
             dataSetEntries2.add(Entry(5f, 20f))
             dataSetEntries2.add(Entry(6f, 70f))
             dataSetEntries2.add(Entry(7f, 120f))
+            dataSetEntries2.add(Entry(8f, 120f))
+            dataSetEntries2.add(Entry(9f, 120f))
+            dataSetEntries2.add(Entry(10f, 120f))
         }
 }
